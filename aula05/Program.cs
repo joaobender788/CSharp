@@ -1,37 +1,39 @@
 using System;
+using System.Globalization;
+
 public class Aluno{
-    public String nome {get; set;}
-    String matricula {get; set;}
-    float nota1 {get; set;}
-    float nota2 {get; set;}
-    float media {get; set;}
+    public string Nome {get; set;}
+    public string Matricula {get; set;}
+    public float Nota1 {get; set;}
+    public float Nota2 {get; set;}
+    public float Media {get; set;}
 
     public void pedirDados(){
         Console.WriteLine("Digite seu nome: ");
-        nome = Console.ReadLine();
+        Nome = Console.ReadLine();
         Console.WriteLine("Digite o número da sua matrícula: ");
-        matricula = Console.ReadLine();
+        Matricula = Console.ReadLine();
         Console.WriteLine("Digite a nota 1: ");
-        nota1 = float.Parse(Console.ReadLine());
+        Nota1 = float.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
         Console.WriteLine("Digite a nota 2:");
-        nota2 = float.Parse(Console.ReadLine());
+        Nota2 = float.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
     }
 
     public void calcularMedia(){
-        media = (nota1 + nota2)/2;
+        Media = (Nota1 + Nota2)/2;
     }
 
     public void exibirDados(){
-        Console.WriteLine($"\nALuno: {nome}");
-        Console.WriteLine($"Matrícula: {matricula}");
-        Console.WriteLine($"Média: {media}");
+        Console.WriteLine($"\nAluno: {Nome}");
+        Console.WriteLine($"Matrícula: {Matricula}");
+        Console.WriteLine($"Média: {Media}");
         Console.Write("Situação: ");
     }
 
     public void apvRpv(){
-        if(media >= 7){
+        if(Media >= 7){
             Console.WriteLine("Aprovado.");
-        }else if(media<7 && media>=4){
+        }else if(Media<7 && Media>=4){
             Console.WriteLine("Recuperação.");
         }else{
             Console.WriteLine("Reprovado.");
@@ -44,6 +46,12 @@ class Program{
         Aluno aluno = new Aluno();
         
         aluno.pedirDados();
+        aluno.calcularMedia();
+        aluno.exibirDados();
+        aluno.apvRpv();
+    }
+}
+
         aluno.calcularMedia();
         aluno.exibirDados();
         aluno.apvRpv();
